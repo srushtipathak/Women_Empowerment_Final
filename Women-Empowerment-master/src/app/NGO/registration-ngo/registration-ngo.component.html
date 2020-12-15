@@ -1,0 +1,218 @@
+<div class="container">
+    <br />
+    <h3><b>Ngo Details</b></h3>
+    <hr />
+    <div>
+        <div *ngIf="error">
+            <h3 class="text-danger">Invalid Data!!!</h3>
+        </div>
+        <form [formGroup]="registrationForm" (ngSubmit)="onRegsubmit()">
+            <div class="row">
+                <div class="col"><label>Enter Ngo's Name</label></div>
+                <div class="col">
+                    <input type="text" name="name" [formControl]="nameControl" />
+                    <span *ngIf="nameControl.hasError('required') && nameControl.dirty" class="text-danger">Ngo's name
+                        required!!!</span>
+                    <span *ngIf="nameControl.hasError('minlength') && nameControl.dirty" class="text-danger">Ngo's name
+                        must be at-least of 3 chars!!!</span>
+                    <!--
+                    <span *ngIf="!nameControl.valid && nameControl.dirty" class="text-danger">Product name required!!!</span>
+                    -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><label>Enter Ngo's description</label></div>
+                <div class="col">
+                    <input type="text" name="description" [formControl]="descriptionControl" />
+                    <span *ngIf="descriptionControl.hasError('required') && descriptionControl.dirty"
+                        class="text-danger">Ngo's description required!!!</span>
+                    <span *ngIf="descriptionControl.hasError('minlength') && descriptionControl.dirty"
+                        class="text-danger">Ngo's name must be at-least of 10 characters!!!</span>
+                    <!--
+                    <span *ngIf="!nameControl.valid && nameControl.dirty" class="text-danger">Product name required!!!</span>
+                    -->
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col"><label>Password</label></div>
+                <div class="col">
+                    <input type="password" name="password" [formControl]="passwordControl" />
+                    <span *ngIf="passwordControl.hasError('required') && passwordControl.dirty"
+                        class="text-danger">Password required!!!</span>
+                    <span *ngIf="passwordControl.hasError('minlength') && passwordControl.dirty"
+                        class="text-danger">password must be at least of 10 chracters!!!</span>
+
+                </div>
+            </div>
+            <br />
+
+            <div>
+                <h3><b>Address</b></h3>
+                <hr />
+            </div>
+            <div class="row">
+                <div class="col"><label>Address1</label></div>
+                <div class="col">
+                    <input type="text" name="address1" [formControl]="address1Control" />
+                    <span *ngIf="address1Control.hasError('required') && address1Control.dirty"
+                        class="text-danger">Address1 required!!!</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"><label>Address2</label></div>
+                <div class="col">
+                    <input type="text" name="address2" [formControl]="address2Control" />
+                    <span *ngIf="address2Control.hasError('required') && address2Control.dirty"
+                        class="text-danger">Address2 required!!!</span>
+                    <!--
+                    <span *ngIf="!nameControl.valid && nameControl.dirty" class="text-danger">Product name required!!!</span>
+                    -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"><label>City</label></div>
+                <div class="col">
+                    <input type="text" name="city" [formControl]="cityControl" />
+                    <span *ngIf="cityControl.hasError('required') && cityControl.dirty" class="text-danger">City name
+                        required!!!</span>
+                    <!--
+                    <span *ngIf="!nameControl.valid && nameControl.dirty" class="text-danger">Product name required!!!</span>
+                    -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"><label>zipcode</label></div>
+                <div class="col">
+                    <input type="text" name="zipcode" [formControl]="zipcodeControl" />
+                    <span *ngIf="zipcodeControl.hasError('required') && zipcodeControl.dirty"
+                        class="text-danger">zipcode required!!!</span>
+                    <span *ngIf="zipcodeControl.hasError('minlength') && zipcodeControl.dirty"
+                        class="text-danger">zipcode must be of 6 digits!!!</span>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><label>State</label></div>
+                <div class="col">
+                    <input type="text" name="state" [formControl]="stateControl" />
+                    <span *ngIf="stateControl.hasError('required') && stateControl.dirty" class="text-danger">State name
+                        required!!!</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><label>Country</label></div>
+                <div class="col">
+                    <input type="text" name="country" [formControl]="countryControl" />
+                    <span *ngIf="countryControl.hasError('required') && countryControl.dirty"
+                        class="text-danger">Country name required!!!</span>
+                </div>
+            </div>
+            <br />
+            <div>
+                <h3><b>Contact Details</b></h3>
+                <hr />
+            </div>
+            <div class="row">
+                <div class="col"><label>Email</label></div>
+                <div class="col">
+                    <input type="email" name="email" [formControl]="emailControl" ngModel email />
+                    <span *ngIf="emailControl.hasError('required') && emailControl.dirty" class="text-danger">Email
+                        required!!!</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><label>Contact Number</label></div>
+                <div class="col">
+                    <input type="text" name="contact" [formControl]="contactControl" />
+                    <span *ngIf="contactControl.hasError('required') && contactControl.dirty"
+                        class="text-danger">Contact Number required!!!</span>
+                    <span *ngIf="contactControl.hasError('minlength') && contactControl.dirty"
+                        class="text-danger">contact number must be of 10 digits!!!</span>
+
+                </div>
+            </div>
+
+            <br />
+            <div>
+                <h3><b>Course Details</b></h3>
+                <hr />
+            </div>
+
+            <div class="row">
+                <div class="col"><label>Choose your Training Sector</label></div>
+                <div class="col">
+                    <select class="custom-select" (change)="changeSectorName($event)" [formControl]="sectornameControl">
+                        <option value="101">Agriculture</option>
+                        <option value="102">Animal Husbandary</option>
+                        <option value="103">Dairying</option>
+                        <option value="104">Fisheries</option>
+                        <option value="105">Handlooms</option>
+                        <option value="106">Handicrafts</option>
+                    </select>
+                    <span *ngIf="sectornameControl.hasError('required') && sectornameControl.dirty"
+                        class="text-danger">Sector name required!!!</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><label>Course Description</label></div>
+                <div class="col">
+                    <input type="text" name="sectorDescription" [formControl]="sectorDescriptionControl" />
+                    <span *ngIf="sectorDescriptionControl.hasError('required') && sectorDescriptionControl.dirty"
+                        class="text-danger">Course description required!!!</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><label>Start Date</label></div>
+                <div class="col">
+                    <input type="date" name="startDate" [formControl]="startDateControl" />
+                    <span *ngIf="startDateControl.hasError('required') && startDateControl.dirty"
+                        class="text-danger">Start Date required!!!</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><label>End Date</label></div>
+                <div class="col">
+                    <input type="date" name="endDate" [formControl]="endDateControl" />
+                    <span *ngIf="endDateControl.hasError('required') && endDateControl.dirty" class="text-danger">End
+                        Date required!!!</span>
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col"><label>Number Of Seats</label></div>
+                <div class="col">
+                    <input type="text" name="seats" [formControl]="seatsControl" />
+                    <span *ngIf="seatsControl.hasError('required') && seatsControl.dirty" class="text-danger">Number of
+                        seats required!!!</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col">
+                    <input type="submit" value="Register" style="background-color: #4CAF50;
+                    border: none;
+                    color: white;
+                    margin: 4px 2px;
+                    text-decoration: none;
+                    cursor: pointer;
+                    " />
+                </div>
+            </div>
+            <br>
+        </form>
+
+
+
+    </div>
+</div>

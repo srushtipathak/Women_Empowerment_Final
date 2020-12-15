@@ -1,0 +1,152 @@
+<div class="container mx-auto col-md-10 mt-3 mb-4">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Register</h1>
+                        <p class="text-h2">Working Women Hostel Scheme Eligibility</p>
+                        <ul class="text-left">
+                            <li>Training Period less than 1 year</li>
+                            <li>If accompanied by child/children, daughter's age less than 18 years and son's age less
+                                than 5 years.
+                            </li>
+                            <li>Gross income (in metropolitan city) less than Rs. 50,000/-</li>
+                            <li>Gross income (in other cities) less than Rs. 35,000/-</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            <select formControlName="quota" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.quota.errors }">
+                                <option value="" selected disabled>Select Quota</option>
+                                <option value="General">General</option>
+                                <option value="OBC">OBC</option>
+                                <option value="SC/ST">SC/ST</option>
+                                <option value="Physically Challenged">Physically Challenged</option>
+                            </select>
+                            <div *ngIf="submitted && f.quota.errors" class="invalid-feedback">
+                                <div *ngIf="f.quota.errors.required">Quota Required!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mt-4">
+                        <select formControlName="jobType" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.jobType.errors }">
+                            <option value="" selected disabled>Select Job Type</option>
+                            <option value="Permanant">Permanant</option>
+                            <option value="Training">Training</option>
+                        </select>
+                        <div *ngIf="submitted && f.jobType.errors" class="invalid-feedback">
+                            <div *ngIf="f.jobType.errors.required">Job Type Required!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <p>Are you accompanied with a child/children?</p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="childYes" formControlName="child" value="childYes"
+                                class="custom-control-input" (click)="setradio('childYes')">
+                            <label class="custom-control-label" for="childYes">Yes</label>
+                        </div><br>
+                        <div class="custom-control custom-radio custom-control-inline" (click)="setradio('childNo')">
+                            <input type="radio" id="childNo" formControlName="child" value="childNo"
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="childNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col mt-4" *ngIf="isSelected('childYes')">
+                    <select formControlName="childGender" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.childGender.errors }">
+                        <option value="" selected>Select Girl/Boy</option>
+                        <option value="Daughter">Daughter</option>
+                        <option value="Son">Son</option>
+                    </select>
+                    <div *ngIf="submitted && f.childGender.errors" class="invalid-feedback">
+                        <div *ngIf="f.childGender.errors.required">Child Gender Required!</div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center mt-4" *ngIf="isSelected('childYes')">
+                    <div class="col">
+                        <input type="number" class="form-control" formControlName="childAge" placeholder="Child Age"
+                            [ngClass]="{ 'is-invalid': submitted && f.childAge.errors }">
+                        <div *ngIf="submitted && f.childGender.errors" class="invalid-feedback">
+                            <div *ngIf="f.childGender.errors.required">Child Gender Required!</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row align-items-center mt-4" *ngIf="isSelected('childYes')">
+                    <div class="col">
+                        <p>Do you want to opt for Day-Care Services for your child/children?</p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="dayCareYes" name="dayCare" value="dayCareYes"
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="dayCareYes">Yes</label>
+                        </div><br>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="dayCareNo" name="dayCare" value="dayCareNo"
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="dayCareNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <p>Do you live in any of these metro cities (Mumbai, Delhi, Chennai, Kolkata?</p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="cityYes" formControlName="city" value="cityYes"
+                                class="custom-control-input" (click)="setcity('cityYes')">
+                            <label class="custom-control-label" for="cityYes">Yes</label>
+                        </div><br>
+                        <div class="custom-control custom-radio custom-control-inline" (click)="setcity('cityNo')">
+                            <input type="radio" id="cityNo" formControlName="city" value="cityNo"
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="cityNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <input type="number" class="form-control" formControlName="grossAmount"
+                            [ngClass]="{ 'is-invalid': submitted && f.grossAmount.errors && f.grossAmount.touched }"
+                            placeholder="Gross Income in Rs.">
+                        <div *ngIf="submitted && f.grossAmount.errors && f.grossAmount.touched"
+                            class="invalid-feedback">
+                            <div *ngIf="f.grossAmount.errors.required">Gross amount is required!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <select class="custom-select" (change)="changeHostelName($event)" formControlName="hostel">
+                            <option value="" selected disabled>Select Hostel</option>
+                            <option value="101">Amrapali Hostel</option>
+                            <option value="102">Vispute Hostel</option>
+                            <option value="103">Zostel</option>
+                            <option value="104">Rajiv Gandhi Hostel</option>
+                            <option value="105">Maa Sarada Hostel</option>
+                        </select>
+                    </div>
+                    <div *ngIf="submitted && f.hostel.errors && f.hostel.touched" class="invalid-feedback">
+                        <div *ngIf="f.hostel.errors.required">Hostel Name is required!</div>
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <button class="btn btn-sm btn-primary mt-4 mx-auto">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

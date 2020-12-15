@@ -1,0 +1,43 @@
+<div class="mt-3 container col-md-10 d-flex justify-content-center" *ngFor="let ngo of ngolist">
+    <div class="col-md-12">
+        <div class="card user-card-full">
+            <div class="row m-l-0 m-r-0">
+                <div class="col-sm-12">
+                    <div class="card-block">
+                        <h4 class="p-b-5 b-b-default f-w-600">{{ngo.ngoName}}</h4>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <p class="f-w-600">About</p>
+                                <h6 class="text-muted f-w-400">{{ngo.ngoDescription}}</h6>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="f-w-600">Address</p>
+                                <h6 class="f-w-400">{{ngo.ngoAddress.address1}}, {{ngo.ngoAddress.address2}}</h6>
+                                <h6 class="f-w-400">{{ngo.ngoAddress.city}} - {{ngo.ngoAddress.zipCode}}</h6>
+                                <h6 class="f-w-400">{{ngo.ngoAddress.state}}, {{ngo.ngoAddress.country}}</h6>
+                            </div>
+                        </div>
+                        <h6 class="m-t-40 p-b-5 b-b-default f-w-600">Details</h6>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p class="f-w-600">Email</p>
+                                <h6 class="text-muted f-w-400">{{ngo.ngoEmailId}}</h6>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="f-w-600">Contact</p>
+                                <h6 class="text-muted f-w-400">{{ngo.ngoContactNumber}}</h6>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="f-w-600">Training Sector</p>
+                                <h6 class="text-muted f-w-400">{{ngo.sector.sectorName}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="ngolist.length==0" class="justify-content-center conatainer col-md-6 mx-auto mt-5">
+    <h2 class="text-danger mx-auto">Sorry No NGO are Available at this moment!!</h2>
+</div>

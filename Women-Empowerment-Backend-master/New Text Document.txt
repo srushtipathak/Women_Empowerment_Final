@@ -1,0 +1,19 @@
+{
+    "userId":"100",
+    "userName": {
+                "firstName":"Hardik",
+                "middleName":"Paresh",
+                "lastName":"Rathod"
+            },
+    "userEmailId":"hardik.rathod@lntinfotech.com",
+    "userPassword":"123456789",
+    "userContactNumber":"9167684879",
+    "userDOB":"1998-05-29",
+    "userAadhar":"123456789123",
+    "userAddress":{
+        "zipCode":"400067"
+    }
+}
+
+
+

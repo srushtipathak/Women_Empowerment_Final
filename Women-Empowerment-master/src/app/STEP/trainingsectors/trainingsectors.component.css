@@ -1,0 +1,10 @@
+body{
+    padding: 2rem 0rem;
+  }
+img{
+    height: 14rem;
+    width: 100%;
+}  
+.card-text{
+  height: 7rem;
+}

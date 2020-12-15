@@ -1,0 +1,171 @@
+<div class="container-fluid border border-dark head">
+    <div class="row ">
+        <div class="ml-5">
+            <a class="navbar-brand" href="#">
+                <img src="assets/Icons/WCD.png" height="140" width="280">
+            </a>
+        </div>
+        <div class="col-md-9 row justify-content-center align-self-center">
+            <h2>{{title}}</h2>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light border-bottom border-dark sticky-top" *ngIf="choice=='Home'">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-fill w-100">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/home']" (click)="change('Home')">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/step']" (click)="change('STEP')">STEP</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/ngo']" (click)="change('NGO')">NGO's</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/legislationandpolicy']">Legislations & Policy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/aboutus']">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/faq']">FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/admin']" (click)="change('Admin')">Admin</a>
+            </li>
+            <li class="nav-item dropdown" *ngIf="loggedIn">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    {{userName}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light border-bottom border-dark" *ngIf="choice=='STEP'">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-fill w-100">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/step/aboutusstep']">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/step/guidelines']">Guidelines</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/step/trainingsectors']">Training Sectors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/step/ngoStep']">NGO's</a>
+            </li>
+            <li class="nav-item" *ngIf="!registeredUser">
+                <a class="nav-link" [routerLink]="['/step/registrationStep']">Registration</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/step/statusStep']">Status</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/step/faqStep']">FAQ</a>
+            </li>
+            <li class="nav-item dropdown" *ngIf="loggedIn">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    {{userName}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light border-bottom border-dark" *ngIf="choice=='NGO'">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-fill w-100">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/ngo/criteria']">Criteria</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/ngo/organizations']">Organizations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/ngo/fundingnorms']">Funding Norms</a>
+            </li>
+            <li class="nav-item" *ngIf="!registeredNGO">
+                <a class="nav-link" [routerLink]="['/ngo/registrationNGO']">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/ngo/statusNGO']">Status</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/ngo/faqNGO']">FAQ</a>
+            </li>
+            <li class="nav-item dropdown" *ngIf="loggedIn">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    {{userName}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light border-bottom border-dark" *ngIf="choice=='Admin'">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-fill w-100">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/admin/aboutusAdmin']">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/admin/ngoAdmin']">NGO's</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/admin/traineesAdmin']">Trainees</a>
+            </li>
+            <li class="nav-item dropdown" *ngIf="loggedIn">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    {{userName}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<router-outlet></router-outlet>

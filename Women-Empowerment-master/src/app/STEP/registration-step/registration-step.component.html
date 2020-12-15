@@ -1,0 +1,88 @@
+<div class="container mx-auto mt-3 p-3 col-md-6 mb-5">
+    <h2 align="center" class="m-3 text-secondary">Registration</h2>
+    <hr>
+    <form [formGroup]="StepForm" (ngSubmit)="updateUser()">
+        <h4>Father's Details</h4>
+        <hr>
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" [formControl]="fatherNameControl">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputMiddle">Contact Number</label>
+                <input type="number" class="form-control" id="inputMiddle" placeholder="Contact"
+                    [formControl]="fatherContactControl">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="dob">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" [formControl]="fatherDOBControl">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="occupation">Occupation</label>
+                <input type="text" class="form-control" id="occupation" placeholder="Occupation"
+                    [formControl]="fatherOccupationControl">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="occupation">Salary</label>
+                <input type="number" class="form-control" id="salary" placeholder="Salary"
+                    [formControl]="fatherSalaryControl">
+            </div>
+        </div>
+        <h4 class="mt-3">Mother's Details</h4>
+        <hr>
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="Mname">Name</label>
+                <input type="text" class="form-control" id="Mname" placeholder="Name" [formControl]="motherNameControl">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Mcontact">Contact Number</label>
+                <input type="number" class="form-control" id="Mcontact" placeholder="Contact"
+                    [formControl]="motherContactControl">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="Mdob">Date of Birth</label>
+                <input type="date" class="form-control" id="Mdob" [formControl]="motherDOBControl">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Moccupation">Occupation</label>
+                <input type="text" class="form-control" id="Moccupation" placeholder="Occupation"
+                    [formControl]="motherOccupationControl">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="Msalary">Salary</label>
+                <input type="number" class="form-control" id="Msalary" placeholder="Salary"
+                    [formControl]="motherSalaryControl">
+            </div>
+        </div>
+        <h4 class="mt-3">Document Section</h4>
+        <hr>
+        <div class="form-group">
+            <label for="aadhar">Aadhar Number</label>
+            <input type="text" class="form-control" id="aadhar" placeholder="Aadhar Number"
+                [formControl]="aadharControl">
+        </div>
+        <h4 class="mt-4">Training Sector</h4>
+        <hr>
+        <div class="form-group mb-5">
+            <label for="aadhar">Training Sector</label>
+            <select class="custom-select" (change)="changeSectorName($event)" [formControl]="sectorNameControl">
+                <option selected disabled>Select Sector</option>
+                <option *ngFor="let sector of sectorNames" value="{{sector}}">{{sector}}</option>
+            </select>
+        </div>
+        <hr>
+        <div class="form-row">
+            <button type="submit" class="mx-auto btn btn-primary" [disabled]="!StepForm.valid">Next</button>
+        </div>
+    </form>
+</div>

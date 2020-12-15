@@ -1,0 +1,68 @@
+<div class="container mx-auto mt-3">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Register</h1>
+                        <p class="text-h2">Sukanya Samridhi Yojana Eligibility</p>
+                        <ul class="text-left">
+                            <li>Citizen of India</li>
+                            <li>Age less than 10</li>
+                            <li>Minimum Deposit should be Rs. 1000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            <input type="number" class="form-control" formControlName="age"
+                                [ngClass]="{ 'is-invalid': submitted && f.age.errors }" placeholder="Age">
+                            <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+                                <div *ngIf="f.age.errors.required">Age is required!</div>
+                                <div *ngIf="f.age.errors.max">Age is greater!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mt-4">
+                        <select placeholder="Account Type" formControlName="accountType" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.accountType.errors }">
+                            <option value="" selected>Select account type</option>
+                            <option value="Post Office">Post Office</option>
+                            <option value="Bank">Bank</option>
+                        </select>
+                        <div *ngIf="submitted && f.accountType.errors" class="invalid-feedback">
+                            <div *ngIf="f.accountType.errors.required">Account Type Required!</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <input type="number" class="form-control" formControlName="accountNumber"
+                            [ngClass]="{ 'is-invalid': submitted && f.accountNumber.errors }"
+                            placeholder="Account Number">
+                        <div *ngIf="submitted && f.accountNumber.errors" class="invalid-feedback">
+                            <div *ngIf="f.accountNumber.errors.required">Account Number is required!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-start mt-4">
+                    <div class="col">
+                        <input type="number" class="form-control" formControlName="balance"
+                            [ngClass]="{ 'is-invalid': submitted && f.balance.errors }"
+                            placeholder="Deposit Amount in Rs.">
+                        <div *ngIf="submitted && f.balance.errors" class="invalid-feedback">
+                            <div *ngIf="f.balance.errors.required">Deposit amount is required!</div>
+                            <div *ngIf="f.balance.errors.min">Deposit amount should be more than Rs.1000</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-md-12 mt-3 justify-content-center">
+                    <input type="submit" class="btn btn-sm btn-primary" value="Submit"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

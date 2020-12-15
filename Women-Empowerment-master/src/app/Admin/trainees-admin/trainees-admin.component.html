@@ -1,0 +1,32 @@
+<div class="container col-md-12 mx-auto mt-3">
+  <table class="table table-hover table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th>TRAINEE ID</th>
+        <th>TRAINEE NAME</th>
+        <th>NGO ID</th>
+        <th>NGO NAME</th>
+        <th>SECTOR NAME</th>
+        <th>APPLIED_DATE</th>
+        <th>STATUS</th>
+        <th>DISAPPROVE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of UserNgo">
+        <td>{{u.primaryKey.user.userId}}</td>
+        <td>{{u.primaryKey.user.userName.firstName}} {{u.primaryKey.user.userName.middleName}} {{u.primaryKey.user.userName.lastName}}</td>
+        <td>{{u.primaryKey.ngo.ngoId}}</td>
+        <td>{{u.primaryKey.ngo.ngoName}}</td>
+        <td>{{u.primaryKey.ngo.sector.sectorName}}</td>
+        <td> {{u.appliedAt}} </td>
+        <td class="text-center"><button *ngIf="u.status == 0" type="button" class="btn btn-sm btn-success"
+            (click)="update(u)">Approve</button>
+          <span *ngIf="u.status == 1"><b><i class="fa fa-check"></i></b></span>
+        <td>
+          <button type="button" class="btn btn-sm btn-danger" (click)=delete(u)>Disapprove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

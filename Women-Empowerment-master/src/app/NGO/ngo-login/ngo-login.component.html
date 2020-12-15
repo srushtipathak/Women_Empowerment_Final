@@ -1,0 +1,50 @@
+<br />
+
+<div class="container">
+    <h2>Login</h2>
+    <hr />
+    <div *ngIf="error">
+        <h3 class="text-danger">Invalid Data!!!</h3>
+    </div>
+    <div *ngIf="!submitted">
+        <h3 class="text-danger">{{message}}</h3>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginsubmit()">
+        <div class="row">
+            <div class="col"><label>Enter Email id</label></div>
+            <div class="col">
+                <input type="text" name="email" [formControl]="emailControl" />
+                <span *ngIf="emailControl.hasError('required') && emailControl.dirty" class="text-danger">Email
+                    required!!!</span>
+                <!--
+                <span *ngIf="!nameControl.valid && nameControl.dirty" class="text-danger">Product name required!!!</span>
+                -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col"><label>Enter Password</label></div>
+            <div class="col">
+                <input type="password" name="password" [formControl]="passwordControl" />
+                <span *ngIf="passwordControl.hasError('required') && passwordControl.dirty" class="text-danger">Password
+                    required!!!</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="submit" value="Login" style="background-color: #4CAF50;
+                border: none;
+                color: white;
+                margin: 4px 2px;
+                text-decoration: none;
+                cursor: pointer;
+                " />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a [routerLink]="['/ngo/registrationNGO']">Click Here to Register</a>
+            </div>
+        </div>
+    </form>
+</div>

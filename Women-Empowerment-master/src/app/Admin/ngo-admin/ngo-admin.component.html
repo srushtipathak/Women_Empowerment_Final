@@ -1,0 +1,40 @@
+<div class="container col-md-12 mx-auto mt-3">
+  <table class="table table-hover table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th>NGO ID</th>
+        <th>NGO DESCRIPTION</th>
+        <th>NGO NAME</th>
+        <th>NGO CONTACT NUMBER</th>
+        <th>ADDRESS</th>
+        <th>NGO EMAILID</th>
+        <th>START DATE</th>
+        <th>END DATE</th>
+        <th>TRAINING SEATS</th>
+        <th>SECTOR NAME</th>
+        <th>STATUS</th>
+        <th>DISAPPROVE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of Ngo">
+        <td> {{e.ngoId}} </td>
+        <td> {{e.ngoDescription}} </td>
+        <td> {{e.ngoName}} </td>
+        <td>{{e.ngoContactNumber}}</td>
+        <td> {{e.ngoAddress.address1}}, {{e.ngoAddress.address2}}, {{e.ngoAddress.city}}, {{e.ngoAddress.state}} - {{e.ngoAddress.zipCode}}, {{e.ngoAddress.country}}</td>
+        <td>{{e.ngoEmailId}}</td>
+        <td>{{e.startDate}}</td>
+        <td>{{e.endDate}}</td>
+        <td>{{e.trainingSeats}}</td>
+        <td>{{e.sector.sectorName}}</td>
+        <td class="text-center"><button *ngIf="e.status == 0" type="button" class="btn btn-sm btn-success"
+            (click)="update(e)">Approve</button>
+          <span *ngIf="e.status == 1"><b><i class="fa fa-check"></i></b></span>
+        <td>
+          <button type="button" class="btn btn-sm btn-block btn-danger" (click)=delete(e)>Disapprove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
